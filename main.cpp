@@ -8,7 +8,7 @@
 #include <fstream>
 
 const std::filesystem::path IMAGE_PATH = "resources/bike_person.jpg";
-void main()
+int main()
 {
     // Files we need for object detection
     std::filesystem::path config_path = "resources/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt";
@@ -71,5 +71,5 @@ void main()
     cv::namedWindow("Image",cv::WindowFlags::WINDOW_KEEPRATIO);
     cv::imshow("Image",img);
     cv::waitKey(0);
-    return;
+    return 0;
 }
