@@ -6,7 +6,9 @@ OpenCV with Tensorflow generated models
 # Dependencies #
 
 OpenCV with dnn, highgui, and imgproc modules installed
-C++17 compiler 
+TensorFlow configuration and model weight files (in resources folder),
+see the [TensorFlow](https://github.com/tensorflow/models/tree/master/research/object_detection) object detection model repo for more options.
+C++17 compiler
 
 # Installation #
 From the github source with cmake
