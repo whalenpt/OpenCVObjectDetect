@@ -12,7 +12,7 @@ int main()
 {
     // Files we need for object detection
     std::filesystem::path config_path = "resources/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt";
-    std::filesystem::path model_path = "resources/frozen_inference_graph.pb";
+    std::filesystem::path model_path = "resources/ssd_mobilenet_v3_large_coco_2020_01_14_weights.pb";
     std::filesystem::path label_path = "resources/coco_names.txt";
 
     if(!std::filesystem::exists(config_path))
