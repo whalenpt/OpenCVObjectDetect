@@ -7,19 +7,23 @@ project(myproject)
 #    add_definitions("-DHAVE_[comp_name]")
 
 find_package(OpenCV REQUIRED dnn highgui imgproc)
-add_executable(run main.cpp)
 
-target_include_directories(run PUBLIC ${OpenCV_INCLUDE_DIRS})
-target_link_libraries(run
-  opencv_dnn
-  opencv_highgui
-  opencv_imgproc
-)
+add_executable(mobilenet_image dnn_mobilenet.cpp)
+add_executable(yolo_image dnn_yolo.cpp)
 
-set(out_directory $<TARGET_FILE_DIR:run>)
+foreach(item mobilenet_image yolo_image)
+  target_include_directories(${item} PUBLIC ${OpenCV_INCLUDE_DIRS})
+  target_link_libraries(${item}
+    opencv_dnn
+    opencv_highgui
+    opencv_imgproc
+  )
+  set(out_directory "$<TARGET_FILE_DIR:${item}>")
+  add_custom_command(TARGET ${item} POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+      ${CMAKE_SOURCE_DIR}/resources ${out_directory}/resources
+  )
+endforeach()
 
-add_custom_command(TARGET run POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_SOURCE_DIR}/resources ${out_directory}/resources
-)
+
 
