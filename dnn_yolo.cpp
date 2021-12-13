@@ -49,15 +49,21 @@ int main()
     std::vector<int> class_ids;
     std::vector<float> confidences;
     std::vector<cv::Rect> boxes;
-    float conf_threshold = 0.5f;
+    float conf_threshold = 0.25f; // need low threshold to detect focal person in bike_person.jpg
     model.detect(img,class_ids,confidences,boxes,conf_threshold);
+
+    // Perform non-maximum suppression (of repeatedly detected objects)
+    std::vector<int> indices;
+    float nms_threshold = 0.5f; // higher -> keep more boxes
+    cv::dnn::NMSBoxes(boxes,confidences,conf_threshold,nms_threshold,indices);
 
     // Draw boxes around detected objects and name them
     double font_scale = 1.25;
     int font_thickness = 1;
     int line_thickness = 2;
 
-    for(int i = 0; i < boxes.size(); i++){
+    // Loop over NMS indices
+    for(auto i : indices) {
         cv::Rect& box = boxes[i];
         cv::rectangle(img,box,cv::Scalar(0,255,255),line_thickness);
         int class_id = class_ids[i];
