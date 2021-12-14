@@ -7,7 +7,7 @@ trained on the COCO dataset.
 # Dependencies #
 
 - [OpenCV](https://opencv.org) with the modules dnn, highgui, and imgproc installed
-- Configuration and model weight files (in resources folder); see [TensorFlow](https://github.com/tensorflow/models/tree/master/research/object_detection) object detection model repo for more models
+- Configuration and model weight files (in resources folder)
 - C++17 compiler
 
 # Build Examples #
