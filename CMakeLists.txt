@@ -10,8 +10,9 @@ find_package(OpenCV REQUIRED dnn highgui imgproc)
 
 add_executable(mobilenet_image dnn_mobilenet.cpp)
 add_executable(yolo_image dnn_yolo.cpp)
+add_executable(maskrcnn_image dnn_maskrcnn.cpp)
 
-foreach(item mobilenet_image yolo_image)
+foreach(item mobilenet_image yolo_image maskrcnn_image)
   target_include_directories(${item} PUBLIC ${OpenCV_INCLUDE_DIRS})
   target_link_libraries(${item}
     opencv_dnn
