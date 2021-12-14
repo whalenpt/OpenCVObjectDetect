@@ -1,7 +1,8 @@
 # Project #
 
-c++ programs for object detection using
-OpenCV with Tensorflow generated models
+c++ programs for object detection and image segmentation using the
+OpenCV dnn module. Example programs use MobileNet, YOLO-tiny, and MaskRCNN neural networks
+trained on the COCO dataset.
 
 # Dependencies #
 
