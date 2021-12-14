@@ -14,7 +14,6 @@ int main()
     // Files we need for object detection
     std::filesystem::path config_path = "resources/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt";
     std::filesystem::path model_path = "resources/mask_rcnn_inception_v2_coco_2018_01_28_weights.pb";
-    // Need to update label_path (rcnn model has 90 class ids, not 80)
     std::filesystem::path label_path = "resources/coco_names.txt";
 
     if(!std::filesystem::exists(config_path))
